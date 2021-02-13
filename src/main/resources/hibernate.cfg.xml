@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE hibernate-configuration SYSTEM 
+        "classpath://hibernate-configuration-3.0.dtd"> -->
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+       <property name="hibernate.connection.url">jdbc:postgresql://postgresqldb:5432/gamoney_welcome</property> 
+   <!--    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/gamoney_welcome</property> --> 
+        
+       <property name="hibernate.connection.username">postgres</property>
+       
+          <property name="hibernate.connection.password">postgres</property>        
+        <!-- <property name="hibernate.connection.password">nikkibro0</property>--> 
+         <property name="connection.pool_size">100</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.connection.charSet" >UTF-8</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="cache.use_second_level_cache">false</property>
+<!--         <property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>  -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.transaction.coordinator_class">jdbc</property>
+        <mapping class="Phase1.Users.user"></mapping> 
+        <mapping class="Phase1.Users.Google_user"></mapping> 
+        <mapping class="Phase1.Users.star_wallet"></mapping>
+        
+    </session-factory>
+</hibernate-configuration>

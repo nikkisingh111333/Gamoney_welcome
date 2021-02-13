@@ -1,0 +1,95 @@
+version: '3.1'
+services:
+  
+  app2:
+    container_name: gamoney-welcome-new
+    image: gamoney-welcome-new
+  #  environment:
+    # - eureka.client.serviceUrl.defaultZone=http://gamoney-eureka-server:8761/eureka/
+    build: ./
+    ports:
+     - "8871:8871"
+    depends_on:
+     #- app1
+     - postgresqldb
+     - redis
+    networks: 
+      - gamoney_wala
+    links:
+      - redis
+  postgresqldb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=gamoney_welcome
+    networks: 
+      - gamoney_wala
+    volumes:
+      - postgres:/var/lib/postgres/data
+  pg_admin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin4_2
+    ports:
+      - "5050:5050"
+    environment:
+      - GUNICORN_THREADS=1
+      - PGADMIN_DEFAULT_EMAIL=nikki
+      - PGADMIN_DEFAULT_PASSWORD=nikki
+    depends_on:
+      - postgresqldb
+    networks: 
+      - gamoney_wala
+  redis:
+    image: redis
+    container_name: redis2
+    command: [ "redis-server", "--protected-mode", "no" ]
+    ports:
+      - "6379:6379"
+    build: ./
+    networks:
+     - gamoney_wala
+    volumes:
+      - redis:/var/lib/redis/data
+  elasticsearch:
+    image: elasticsearch
+   
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - gamoney_wala
+  kibana:
+    image: kibana
+    container_name: kibana
+    environment:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+    ports:
+      - "5601:5601"
+    restart: on-failure
+    volumes:
+      - kibana:/usr/share/kibana/data
+    networks:
+      - gamoney_wala
+networks:
+  gamoney_wala:
+    driver: bridge
+volumes:
+  postgres:
+  redis:
+  elasticsearch:
+  kibana:
+   driver: local
+    

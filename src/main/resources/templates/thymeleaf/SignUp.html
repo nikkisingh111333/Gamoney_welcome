@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script>
+  function checkvalue(my){
+      var value=my.value
+      console.log(value)
+      if(value.includes("<")||value.includes(">")||value.includes("</")||value.includes("$")){
+          my.value=""
+      }
+      console.log("ID:"+my.id)
+      if(my.id=="passWord"){
+    	  valid()
+    	  check()
+      }
+  }
+  function valid(){
+    var pass=passWord;
+    var elements=document.getElementsByTagName("li");
+    
+    if(/([A-Z]{1,})$/.test(pass.value)){
+            elements[0].style.color="green";
+    }
+    else if(/([A-Z 0-9]{1,})$/.test(pass.value)){
+            
+            elements[1].style.color="green";
+
+    }
+    else{
+     if(pass.value==''){
+        elements[0].style.color="red";
+        elements[1].style.color="red";
+        elements[2].style.color="red";
+
+     }
+    }
+    if(pass.value.length>=6){
+        
+            elements[2].style.color="green";     
+    }
+     else{
+       
+            elements[2].style.color="red";
+     }
+
+    
+
+    
+
+
+  }
+  function check(){
+    //alert("best");
+    let div=show;
+    div.style.display="block";
+
+
+  }
+
+var canvi=document.getElementById("canvas1");
+var ctx=canvi.getContext("2d");
+ctx.fillRect(10,10,30,30);
+ctx.fillStyle="red";
+ctx.fill();
+function anime(){
+ 
+
+
+}
+</script>
+<style>
+ #show{
+   display:none;
+
+  }
+ 
+
+</style>
+<meta charset="UTF-8">
+<title>SignUpPage</title>
+</head>
+<body>
+<div>
+<h1 th:text="${Welcome}">welcome</h1>
+<h1 style="color:red" th:text="${alreadyThere}"></h1>
+<h1 style="color:red" th:text="${error}"></h1>
+<form th:action="@{/save}" th:object="${user}" method="post">
+     your username:<input type="text" name="username" placeholder="what we call you?" oninput="checkvalue(this)" required><br>
+      your password:<input type="password" placeholder="No one is watching you!" id="passWord" name="password" oninput="checkvalue(this);" required>
+                        <div id="show">
+                            <ul>
+                              <li style="color:red;font:italic">Check first Letter Is Capital</li>
+                              <li style="color:red;font:italic">Check Numeric is there!</li>
+                              <li style="color:red;font:italic">6 OR MORE LENGTH</li>
+                            </ul>
+                        </div><br>
+
+                
+     your email address:<input type="text" oninput="checkvalue(this)" name="email" placeholder="To here we informs you?" required><br>
+     your MobileNo:<input type="text" oninput="checkvalue(this)" name="phnumber" placeholder="how we can connect?" required><br>
+     your Nationality:<input type="text" oninput="checkvalue(this)" name="nationality" placeholder="And you are ?" required><br> (e.g: For India type="INDIAN")
+     
+     
+            <input type="hidden" th:if="${referID!=null}" th:value="${referID}" th:name="referID">
+     <input type="submit" value="SIGNUP">
+    
+   </form>
+</div>
+</body>
+</html>

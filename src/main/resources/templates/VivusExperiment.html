@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.5/vivus.js" integrity="sha512-JDgkxcdf7oYN/lR29Dzzw17b5Rv42eJ4Vj8aysjr+YpqwaURHrcR1/wGmyIBlsXK55Wsq3TW9tWoDzIou2q3qw==" crossorigin="anonymous"></script>
+    
+    </head>
+
+<body>
+    <header></header>
+    <main>
+    <input type="file" accept="application/pdf">
+        
+    <svg id="my-svg" height="400" width="450">
+       <path data-start="0" data-duration="10" id="lineAB" d="M 100 350 l 150 -300" stroke="red"
+  stroke-width="3" fill="none" />
+  <path data-start="6" data-duration="10" id="lineBC" d="M 250 50 l 150 300" stroke="red"
+  stroke-width="3" fill="none" />
+  <path data-start="10" data-duration="10" d="M 175 200 l 150 0" style="border:2px solid black;stroke:orange;filter:invert(1) hue-rotate(130deg)" filter="url(#f1)" stroke-width="23"
+  fill="none" />
+        <path data-start="16" data-duration="10" d="M 100 350 q 150 -300 300 0" stroke="blue"
+  stroke-width="5" filter="url(#f1)" fill="none" />
+        <defs>
+    <filter id="f1" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" />
+    </filter>
+            <filter id="f2" x="0" y="0">
+            
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.3" />
+            </filter>
+  </defs>
+    </svg>
+    
+    <script>
+        new Vivus('my-svg', {
+            duration: 120,
+            onReady:function(vivus){
+                vivus.el.setAttribute("style","background:gold;transition:4s all")
+                
+                vivus.el.setAttribute("filter","url(#f2)")
+            }
+        }, function(){});
+    </script>
+    </main>
+    <footer></footer>
+
+
+</body></html>

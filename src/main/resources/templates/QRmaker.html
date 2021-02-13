@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+    <script async src="/awsomeQRcode.js"></script>
+    <script>
+        var img = new Image();
+        console.log(AwsomeQR)
+        img.crossOrigin = "Anonymous";
+        img.onload = () => {
+            AwesomeQR.create({
+                text: "Makito loves Kafuu Chino.",
+                size: 800,
+                margin: 20,
+                backgroundImage: img,
+                bindElement: "qrcode",
+            });
+        };
+        img.src = "https://avatars3.githubusercontent.com/u/5277268?s=460&v=4";
+
+    </script>
+</head>
+
+<body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+    
+</body>
+
+</html>

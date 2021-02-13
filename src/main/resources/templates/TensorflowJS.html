@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>Example Title</title>
+	<meta name="author" content="Your Name">
+	<meta name="description" content="Example description">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="">
+	<link rel="icon" type="image/x-icon" href=""/>
+</head>
+
+<body>
+	<header></header>
+	<main></main>
+	<footer></footer>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+    <script src="https://github.com/SumiMakito/Awesome-qr.js/tree/master/dist/awesome-qr.js"></script>
+<script>
+  async function getData() {
+  const carsDataReq = await fetch('https://storage.googleapis.com/tfjs-tutorials/carsData.json');  
+  const carsData = await carsDataReq.json(); 
+      console.log(carsData)
+  const cleaned = carsData.map(car => ({
+    mpg: car.Miles_per_Gallon,
+    horsepower: car.Horsepower,
+  }))
+  .filter(car => (car.mpg != null && car.horsepower != null)); //filter out our missing value
+  console.log(cleaned)
+  return cleaned;
+}    
+ async function run() {
+  // Load and plot the original input data that we are going to train on.
+  const data = await getData();
+  const values = data.map(d => ({
+    x: d.horsepower,
+    y: d.mpg,
+  }));
+
+  tfvis.render.scatterplot(
+    {name: 'Horsepower v MPG'},
+    {values}, 
+    {
+      xLabel: 'Horsepower',
+      yLabel: 'MPG',
+      height: 300
+    }
+  );
+
+  // More code will be added below
+}
+console.log(tf.sequential())
+document.addEventListener('DOMContentLoaded', run);
+    
+</script>
+</body>
+
+</html>

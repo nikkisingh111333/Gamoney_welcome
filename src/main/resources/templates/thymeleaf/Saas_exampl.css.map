@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAOA,IAAI;EACI,KAAK,EARL,GAAG;EAGP,MAAM,EAAC,KAAK;EACZ,KAAK,EAAC,KAAK;EACX,gBAAgB,EAAC,kCAAgC;EAM7C,SAAI,EAAC,IAAI;EACT,UAAK,EAAC,MAAM;;;AAIhB,QAAE;EACE,KAAK,EAAC,IAAI;EACV,UAAU,EAAC,OAAO;EAClB,WAAW,EAAE,OAAO",
+"sources": ["Saas_exampl.scss"],
+"names": [],
+"file": "Saas_exampl.css"
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>TournamentHub</title>
+<style>
+  #match_1:hover{
+    
+    
+  
+  }
+
+
+
+
+</style>
+<script>
+var check=function(){
+    var form=document.getElementById("match_1")
+    
+    var ajax=new XMLHttpRequest();
+    ajax.open("GET","https://localhost:8998/apps/pubg-m/PUBG_MOBILE",true);
+    ajax.withCredentials=true
+//ajax.setRequestHeader("Content-Type","application/json")
+    //alert(ajax.readyState);
+    ajax.onreadystatechange=function(){
+        console.log(ajax.readyState)
+        
+        if(ajax.readyState==4){
+          
+          let res=ajax.responseText;
+          console.log(res);
+          let parsed_res=JSON.parse(res);
+          console.log(parsed_res);
+          if(parsed_res==true){
+            console.log("i m running bab")
+            document.getElementById("match_1").submit();
+            console.log("babuuuu");
+           
+          }
+          else{
+        	form.style="box-shadow:0 0 10px 400px gray"
+            form.style.background="linear-gradient(to left,red,blue,grean)"
+            form.style.position="absolute"
+            form.style.width="200px"
+            form.style.height="200px"
+            form.style.left="300px"
+            form.style.top="300px"
+            	form.style.display="inline-block"
+            
+          }
+        }
+    }
+    //console.log("REQUEST BODY:"+JSON.stringify(data_input[0].value+"&platform="+data_input[1].value))
+    ajax.send()
+ }
+
+
+
+
+</script>
+</head>
+<body bgcolor=lightgreen>
+<h1 th:text="${'Hello '+session.user}"></h1>
+ <div th:if="${joinVerifying!=null}">
+  <strong><h2 style="color:orange" th:text="${joinVerifying}"></h2></strong>
+  
+  <div th:if="${youcant!=null}">
+    <strong><h2 style="color:orange;" th:text="${youcant}"></h2></strong>
+    
+       <STRONG><ul style="color:purple;font-size:30px">
+   <li><a href="https://localhost:8998/apps/pubg-pc/PUBG">PUBG-PC-TOURNAMENTS(LIVE)</a> 
+   <H5>"Your achievments Speaks.Whatever you achieve TODAY we value it with great rewards to you"</H5><BR>
+   <H5>SELECT->PAY->PLAY->AND GET REWARDED!</H5>
+  </ul></STRONG>
+   <STRONG><ul style="color:lightblue;font-size:30px">
+   <div style="width:400px;height:70px;background-image:linear-gradient(to right,yellow,red);" onclick="check()">
+    <h3>PUBG-MOBILE[LIVE]</h3>
+  </div>
+   <form  accept-charset="utf-8" id="match_1" style="display:none;" action="https://localhost:8998/apps/pubg-m/playerinfo" method="get">
+     <label>ENTER YOUR PUBG MOBILE NAME!</label>
+     <input type="text" name="pubgname" placeholder="daddy's princess">
+     <input type="submit" value="LETS WIN!">
+   </form> 
+   <H5>"LOVE PUBG ON HAND-MAKE MONEY STAKE PLAYING PUBG MOBILE-JOIN:NOW"</H5><BR>
+   <H5>SELECT->PAY->PLAY->AND GET REWARDED!</H5>
+   <h3 style="color:blue">DoWNLOAD PUBG MOBILE FROM HERE!</h3>
+   <a style="color:red;font-family: fantasy;"href="https://play.google.com/store/apps/det">DOWNLOAD BOMBSQUAD FOR MOBILE</a>
+   
+  </ul></STRONG>
+
+ </div>
+ <div th:unless="${youcant==null}">
+    <tr>
+<td>
+ <BIG>MayBe you are not LOOGED IN CORRECTLY!ITS OK TRY AGAIN </BIG>
+<form action="loginAccess" method="post">
+   <label>Username</label>
+   <input type="text" name="username"><br>
+   <label>Password</label>
+   <input type="text" name="password"><br>
+    <input type="submit" value="GET-IN!">
+  </form>
+</tr>
+<td>
+<big>HEAD BACK TO SIGNUP PAGE!</big>
+<strong><a href="SIGNUP">SIGNUP</a></strong>||
+</td>
+<td>
+ </div>   
+</div>
+    <strong><h2 style="color:orange;" th:text="${youcant}"></h2></strong>
+    
+       <STRONG><ul style="color:purple;font-size:30px">
+   <li><a href="https://localhost:8998/apps/pubg-pc/PUBG">PUBG-PC-TOURNAMENTS(LIVE)</a> 
+   <H5>"Your achievments Speaks.Whatever you achieve TODAY we value it with great rewards to you"</H5><BR>
+   <H5>SELECT->PAY->PLAY->AND GET REWARDED!</H5>
+  </ul></STRONG>
+   <STRONG><ul style="color:lightblue;font-size:30px">
+   <div style="width:400px;height:70px;background-image:linear-gradient(to right,yellow,red);" onclick="check()">
+    <h3>PUBG-MOBILE[LIVE]</h3>
+  </div>
+   <form  accept-charset="utf-8" id="match_1" style="display:none;" action="https://localhost:8998/apps/pubg-m/playerinfo" method="get">
+     <label>ENTER YOUR PUBG MOBILE NAME!</label>
+     <input type="text" name="pubgname" placeholder="daddy's princess">
+     <input type="submit" value="LETS WIN!">
+   </form> 
+   <H5>"LOVE PUBG ON HAND-MAKE MONEY STAKE PLAYING PUBG MOBILE-JOIN:NOW"</H5><BR>
+   <H5>SELECT->PAY->PLAY->AND GET REWARDED!</H5>
+   <h3 style="color:blue">DoWNLOAD PUBG MOBILE FROM HERE!</h3>
+   <a style="color:red;font-family: fantasy;"href="https://play.google.com/store/apps/det">DOWNLOAD BOMBSQUAD FOR MOBILE</a>
+   
+  </ul></STRONG>
+
+
+   
+ 
+</body>
+</html>

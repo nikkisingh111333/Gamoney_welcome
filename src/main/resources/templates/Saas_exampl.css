@@ -1,0 +1,16 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Nikki\%20singh\/workspace-sts-3\.9\.8\.RELEASE\/Gamoney-welcome\/src\/main\/resources\/templates\/thymeleaf\/Saas_exampl\.scss}line{font-family:\000038}}
+.doo {
+  color: red;
+  height: 300px;
+  width: 400px;
+  background-image: linear-gradient(blue, red, violet);
+  font-size: 20px;
+  font-style: italic; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Nikki\%20singh\/workspace-sts-3\.9\.8\.RELEASE\/Gamoney-welcome\/src\/main\/resources\/templates\/thymeleaf\/Saas_exampl\.scss}line{font-family:\0000317}}
+.nest h1 {
+  color: cyan;
+  font-style: oblique;
+  font-family: fantasy; }
+
+/*# sourceMappingURL=Saas_exampl.css.map */

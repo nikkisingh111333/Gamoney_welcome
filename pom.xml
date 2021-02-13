@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.8.BUILD-SNAPSHOT</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>Gamoney-new</groupId>
+	<artifactId>Gamoney-welcome-new</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Gamoney-welcome-new</name>
+	<description>Session managmenent</description>
+
+	<properties>
+		<java.version>13</java.version>
+		<spring-cloud.version>Hoxton.BUILD-SNAPSHOT</spring-cloud.version>
+		<org.springframework.version>5.2.0.RELEASE</org.springframework.version>
+		 <dl4j.version>0.9.1</dl4j.version>
+	</properties>
+
+	<dependencies>
+	<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-core -->
+<dependency>
+    <groupId>org.deeplearning4j</groupId>
+    <artifactId>deeplearning4j-core</artifactId>
+    <version>${dl4j.version}</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.nd4j/nd4j-native -->
+ <dependency>
+    <groupId>org.nd4j</groupId>
+    <artifactId>nd4j-native</artifactId>
+    <version>${dl4j.version}</version>
+    
+</dependency> 
+<dependency>
+    <groupId>org.nd4j</groupId>
+    <artifactId>nd4j-native-platform</artifactId>
+    <version>${dl4j.version}</version>
+    
+</dependency> 
+   <!-- https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-ui -->
+<dependency>
+    <groupId>org.deeplearning4j</groupId>
+    <artifactId>deeplearning4j-ui_2.11</artifactId>
+    <version>0.9.1</version>
+</dependency>
+
+ <dependency>
+  <groupId>org.nd4j</groupId>
+  <artifactId>nd4j-x86</artifactId>
+  <version>0.4-rc3.8</version>
+</dependency>
+    <!-- https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-nlp -->
+<dependency>
+    <groupId>org.deeplearning4j</groupId>
+    <artifactId>deeplearning4j-nlp</artifactId>
+    <version>${dl4j.version}</version>
+</dependency>
+  <!-- https://mvnrepository.com/artifact/org.nd4j/nd4j-native-platform -->
+
+    
+
+	    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-messaging</artifactId>
+   
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.bytedeco/openblas -->
+ <!-- https://mvnrepository.com/artifact/org.datavec/datavec-local -->
+<dependency>
+    <groupId>org.datavec</groupId>
+    <artifactId>datavec-local</artifactId>
+    <version>${dl4j.version}</version>
+</dependency>
+ 
+ <dependency>
+      <groupId>org.bytedeco</groupId>
+      <artifactId>javacpp-platform</artifactId>
+      <version>1.5.4</version>
+    </dependency>
+     <!--   <dependency>
+      <groupId>org.bytedeco</groupId>
+      <artifactId>opencv-platform</artifactId>
+      <version>4.4.0-1.5.4</version>
+    </dependency>  --> 
+     <!-- <dependency>
+      <groupId>org.bytedeco</groupId>
+      <artifactId>flandmark-platform</artifactId>
+      <version>1.07-1.5.4</version>
+    </dependency> -->
+  <!-- https://mvnrepository.com/artifact/org.bytedeco/javacv-platform -->
+  <dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>javacv-platform</artifactId>
+    <version>1.5.4</version>
+</dependency>  
+   
+ <dependency>
+    <groupId>org.bytedeco.javacpp-presets</groupId>
+    <artifactId>openblas</artifactId>
+    <version>0.2.20-1.4</version>
+</dependency> 
+ <!-- https://mvnrepository.com/artifact/org.bytedeco/tesseract-platform -->
+<dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>tesseract-platform</artifactId>
+    <version>4.1.1-1.5.4</version>
+</dependency>
+ <!-- https://mvnrepository.com/artifact/org.bytedeco/leptonica-platform -->
+<dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>leptonica-platform</artifactId>
+    <version>1.80.0-1.5.4</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.bytedeco/leptonica -->
+<dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>leptonica</artifactId>
+    <version>1.80.0-1.5.4</version>
+</dependency>
+
+<!-- Thanks for using https://jar-download.com -->
+ 
+  <dependency>
+      <groupId>org.bytedeco</groupId>
+      <artifactId>openblas-platform</artifactId>
+      <version>0.3.10-1.5.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bytedeco</groupId>
+      <artifactId>arpack-ng-platform</artifactId>
+      <version>3.7.0-1.5.4</version>
+    </dependency> 
+
+ <dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>javacpp</artifactId>
+    <version>1.5.4</version>
+  </dependency>
+ <!-- <dependency>
+  <groupId>org.bytedeco</groupId>
+  <artifactId>javacpp-presets</artifactId>
+  <version>1.5.4</version>
+  <type>pom</type>
+</dependency>
+<dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>opencv</artifactId>
+    <version>4.4.0-1.5.4</version>
+</dependency>
+ --><!-- https://mvnrepository.com/artifact/com.github.haifengl/smile-math -->
+<!-- https://mvnrepository.com/artifact/org.bytedeco/arpack-ng -->
+<!-- https://mvnrepository.com/artifact/org.bytedeco/arpack-ng -->
+<!-- <dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>arpack-ng</artifactId>
+    <version>3.7.0-1.5.4</version>
+</dependency> -->
+
+<!-- https://mvnrepository.com/artifact/org.bytedeco/javacpp -->
+<!-- <dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>javacpp</artifactId>
+    <version>1.5.4</version>
+</dependency> -->
+<!-- https://mvnrepository.com/artifact/org.bytedeco.javacpp-presets/openblas -->
+<!-- https://mvnrepository.com/artifact/org.bytedeco/openblas -->
+<!-- <dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>openblas</artifactId>
+    <version>0.3.10-1.5.4</version>
+</dependency> -->
+
+ <!-- https://mvnrepository.com/artifact/org.bytedeco/javacpp -->
+<!-- <dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>javacpp</artifactId>
+    <version>1.5.4</version>
+</dependency>
+ -->
+<dependency>
+    <groupId>com.github.haifengl</groupId>
+    <artifactId>smile-math</artifactId>
+    <version>2.6.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.bytedeco/openblas-platform -->
+<!-- <dependency>
+    <groupId>org.bytedeco</groupId>
+    <artifactId>openblas-platform</artifactId>
+    <version>0.3.10-1.5.4</version>
+</dependency>
+ -->
+<dependency>
+    <groupId>com.github.haifengl</groupId>
+    <artifactId>unicorn-bigtable_2.11</artifactId>
+    <version>2.1.1</version>
+</dependency>
+<!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency> -->
+<dependency>
+      <groupId>com.github.haifengl</groupId>
+      <artifactId>smile-plot</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+   <!-- https://mvnrepository.com/artifact/com.github.haifengl/smile-io -->
+<dependency>
+    <groupId>com.github.haifengl</groupId>
+    <artifactId>smile-io</artifactId>
+    <version>2.6.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.github.haifengl/smile-json -->
+<dependency>
+    <groupId>com.github.haifengl</groupId>
+    <artifactId>smile-json_2.13</artifactId>
+    <version>2.6.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.github.haifengl/smile-nlp -->
+<dependency>
+    <groupId>com.github.haifengl</groupId>
+    <artifactId>smile-nlp</artifactId>
+    <version>2.6.0</version>
+</dependency>
+
+   
+        <dependency>
+      <groupId>com.github.haifengl</groupId>
+      <artifactId>smile-core</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!--  <dependency>
+              <groupId>org.springframework.security</groupId>
+              <artifactId>spring-security-taglibs</artifactId>
+         </dependency>
+         -->
+		<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpmime</artifactId>
+    <version>4.5.11</version>
+</dependency>
+		 <dependency>
+       <groupId>net.sourceforge.tess4j</groupId>
+       <artifactId>tess4j</artifactId>
+       <version>4.5.1</version>
+    </dependency>
+    <dependency>
+          <groupId>org.im4java</groupId>
+          <artifactId>im4java</artifactId>
+          <version>1.4.0</version>
+    </dependency> 
+         <dependency>
+             <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+         </dependency>
+    
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-quartz</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+	<!-- 	<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>-->
+	
+<dependency>
+    <groupId>com.netflix.eureka</groupId>
+    <artifactId>eureka-client-jersey2</artifactId>
+    <version>1.9.13</version>
+    <scope>runtime</scope>
+</dependency> 
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.5</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-osgi</artifactId>
+    <version>2.3.2</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-impl</artifactId>
+    <version>2.3.0</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-core</artifactId>
+    <version>2.3.0</version>
+</dependency>
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>tomcat-jasper</artifactId>
+    <version>9.0.17</version>
+    </dependency>
+    <dependency>
+    <groupId>org.springframework.security.oauth.boot</groupId>
+    <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+    <version>2.1.8.RELEASE</version>
+</dependency> 
+<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-hystrix -->
+<!-- <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+    
+</dependency> -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		</dependency>
+<!-- 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency> -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		      <dependency>
+              <groupId>org.hibernate</groupId>
+              <artifactId>hibernate-core</artifactId>
+              <version>5.4.4.Final</version>
+        </dependency>
+  <dependency>
+              <groupId>org.hibernate</groupId>
+              <artifactId>hibernate-ehcache</artifactId>
+              <version>5.4.4.Final</version>
+        </dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+              <groupId>org.apache.httpcomponents</groupId>
+              <artifactId>httpclient</artifactId>
+              <version>4.5.10</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.42.Final</version>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+	    <groupId>redis.clients</groupId>
+	    <artifactId>jedis</artifactId>
+	    <version>3.3.0</version>
+	    <type>jar</type>
+	    </dependency>
+	    <dependency>
+             <groupId>io.lettuce</groupId>
+             <artifactId>lettuce-core</artifactId>
+             <version>5.2.0.RELEASE</version>
+        </dependency>
+        <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+                        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+        <dependency>
+              <groupId>org.apache.httpcomponents</groupId>
+              <artifactId>httpcore</artifactId>
+              <version>4.4.12</version>
+        </dependency>
+                        
+        
+	<!-- 	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency> -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>

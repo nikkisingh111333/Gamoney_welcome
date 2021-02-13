@@ -1,0 +1,77 @@
+
+<html>
+<head>
+    <title>Hello WebSocket</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+   
+</head>
+<body>
+    <div id="loda" style="width:400px;height:400px"></div>
+    <canvas id="canv" width="400" height="400"></canvas>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="name">What is your name?</label>
+                    <input type="text" id="name" class="form-control" placeholder="Your name here...">
+                </div>
+                <button id="send" class="btn btn-default" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>StockInfo</th>
+                </tr>
+                </thead>
+                <tbody id="userinfo">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+         <script>
+   
+      var img=new Image()
+      img.height="400"
+        img.width="400"
+        img.addEventListener("load",function(){
+        img.crossOrigin="Anonymous"
+        var canv=document.getElementById("canv")
+        var ctx=canv.getContext('2d')
+             console.log("loaded")
+            ctx.drawImage(this,0,0,600,200)
+            var img_data=canv.toDataURL('image/jpeg');
+           console.log(img_data)
+              var loda=document.getElementById("loda")
+              
+             loda.style['background-image']="url("+img_data+")"
+        })
+        document.querySelector("body").appendChild(img)
+      
+      img.src="3515.jpg"
+    </script>
+</body>
+</html>

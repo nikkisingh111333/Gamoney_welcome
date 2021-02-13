@@ -1,0 +1,22 @@
+  $name:red;
+    
+@mixin nom{
+    height:300px;
+    width:400px;
+    background-image:linear-gradient(blue,red,violet);
+}
+.doo{
+        color:$name;
+        @include nom;
+    font:{
+        size:20px;
+        style:italic;
+    }
+}
+.nest{
+    h1{
+        color:cyan;
+        font-style:oblique;
+        font-family: fantasy;
+    }
+}

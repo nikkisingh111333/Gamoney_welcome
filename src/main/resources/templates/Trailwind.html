@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+    <title>Tailwind CSS</title>
+    <style>
+        
+        .button-style{
+         @apply border border-red-100 border-r-5 shadow rounded-lg bg-purple-700 h-56 w-1/12 mr-58;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1 class="text-blue-400">Hello World</h1>
+
+    <p class="text-white bg-indigo-900">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, veniam.</p>
+
+    <!-- Border needs to be set before the border-color can be changed -->
+
+    <input type="text" class="bg-transparent text-red border border-blue-100" placeholder="input...">
+
+
+    <div class="bg-green-900 h-6 w-15 mr-140"></div>
+    <div class="bg-blue-700 h-24 w-4/6 my-16"></div>
+    <div class="bg-red-700 h-40 w-6/12 mx-auto"></div>
+    <div class="button-style"> my card</div>
+    <button class="button-style">CLICK HERE</button>
+    <div class="border border-green h-20/10 w-56 mt-50 mx-auto">
+        <h1 class="text-blue py-1 px-6">I'm a box</h1>
+    </div>
+</body></html>

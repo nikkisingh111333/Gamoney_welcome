@@ -1,0 +1,100 @@
+<html>
+   <head>
+    
+
+      <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+      <script>
+          fetch("https://qrcodeutils.p.rapidapi.com/qrcodefree?validate=false&size=150&type=png&level=M&text=http%253A%252F%252Fwww.qrcodeutils.com", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "qrcodeutils.p.rapidapi.com",
+		"x-rapidapi-key": "f16387da8amsh2d014b7a1272a32p1b625bjsna589843c5612"
+	}
+})
+.then(response => {
+	return response.blob()
+          }).then(function(data){
+              var img=document.getElementById("img")
+              img.src=URL.createObjectURL(data)
+          })
+.catch(err => {
+	console.log(err);
+});
+         function setup(){
+             createCanvas(500,500)
+             //BY DEFAULT LOOP() IS CALLED AND CANVAS WILL CALL redraw() ON EVERY MOUSE CLICK bydefault
+             loop()
+         }
+          var x1=130
+          var x2=30
+          var y2=10
+          var w=50
+          var h=40
+//          function circle1(x,y,r){
+//              this.x=x
+//              this.y=y
+//              this.r=r
+//              circle(this.x+100,this.y,this.r)
+//              console.log(circle(this.x,this.y,this.r+100))
+//              rect(60,70,80,80)
+//              fill(123)
+//          }
+          function recta(x,y,w,h){
+              this.x=x
+              this.y=y
+              this.w=w
+              this.h=h
+              rect(x,y,w,h)
+          }
+          function draw(){
+              
+              background(200)
+              console.log("calle")
+              var recta1=new recta(mouseX,mouseY,70,90)
+              var recta2=new recta(x2,30,50,40)
+              stroke(120)
+              point(30,70)
+              point(50,70)
+              point(70,70)
+              point(90,70)
+              var dist2=dist(mouseX,mouseY,x2,50)
+            
+              if(mouseIsPressed){
+                  
+                 var distance=dist(recta1.x,recta1.y,recta2.w,recta2.x)
+                 console.log(distance)
+                 if(distance<20){
+                     
+                   fill(230)
+                     x1=190
+                     x2=10
+                     
+                 }
+                else{
+                    fill(90)
+                }
+                 
+                  x1--
+                  x2++
+                  y2++
+              }
+//             if(dist2<(circl1.r+circle2.r)-45){
+//                 console.log("dist2:"+dist2)
+//                  fill(230)
+//                    x1=190
+//                     x2=10
+//                   var circle2=new circle1(x2,30,30)
+//                
+//              }
+          }
+          
+              console.log(draw)
+//        function mousePressed(){
+//            redraw()
+//        }
+       </script>
+   </head>
+    <body>
+        <img id="img" width="300" height="300">
+    </body>
+</html>
