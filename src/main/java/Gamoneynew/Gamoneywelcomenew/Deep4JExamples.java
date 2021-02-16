@@ -15,11 +15,14 @@ import org.datavec.api.records.reader.RecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVRecordReader;
 import org.datavec.api.split.FileSplit;
 import org.datavec.api.split.InputSplit;
+import org.datavec.api.transform.TransformProcess;
+import org.datavec.api.transform.schema.Schema;
 import org.datavec.api.util.ClassPathResource;
 import org.datavec.image.loader.NativeImageLoader;
 import org.datavec.image.recordreader.ImageRecordReader;
 import org.datavec.image.transform.FlipImageTransform;
 import org.datavec.image.transform.ImageTransform;
+import org.datavec.local.transforms.LocalTransformExecutor;
 //import org.deeplearning4j.api.storage.StatsStorage;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
 import org.deeplearning4j.datasets.iterator.MultipleEpochsIterator;
@@ -66,18 +69,39 @@ import org.nd4j.linalg.learning.config.Sgd;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 public class Deep4JExamples {
-	public static void CNN() throws IOException {
+	public static void CNN() throws IOException, InterruptedException {
 //		var mnistTrain = new MnistDataSetIterator(32, true,123);
 //				var mnistTest = new MnistDataSetIterator(32, false, 123);
 //	    System.out.println(mnistTrain.getLabels());
 	     ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
 	        File mainPath = new File("C:\\Users\\Nikki singh\\Downloads\\CIFAR-10\\train");
+	        RecordReader labelrecordReader = new CSVRecordReader(1) ; //skip first row
+			
+	        labelrecordReader.initialize(new FileSplit(new File("C:\\Users\\Nikki singh\\Downloads\\trainLabels.csv")));
+			 //   System.out.println(labelrecordReader.next(50000).size());
+			    //SCHEMA BEFORE TRANSFORMING LABELS
+			    Schema inputDataSchema = new Schema.Builder()
+			    		.addColumnInteger("id")
+			    	    .addColumnCategorical("label")
+			    	    .build();
+			    //Transforming Schema Removing ID column
+			    TransformProcess tp = new TransformProcess.Builder(inputDataSchema)
+			    	    .removeColumns("id")
+			    	    .build();
+			    
+			 var labels= LocalTransformExecutor.execute(labelrecordReader.next(50000), tp);
+			 
+			 System.out.println(labels.get(0));
+			 NativeImageLoader nil = new NativeImageLoader(32,32, 3);
+				INDArray input = Nd4j.create(new int[]{ 50000, 3, 32, 32 });
+				INDArray output = Nd4j.create(new int[]{ 50000, 10 });
+		
 	        FileSplit fileSplit = new FileSplit(mainPath, NativeImageLoader.ALLOWED_FORMATS, new Random(123));
 	        int numExamples = Math.toIntExact(fileSplit.length());
 	        int numLabels=Math.toIntExact(fileSplit.length());
 	        BalancedPathFilter pathFilter = new BalancedPathFilter(new Random(123), labelMaker, numExamples, numLabels,150);
-
-	        System.out.println(numLabels+"-----"+numExamples+"----"+pathFilter);
+            System.out.println(labelMaker);
+	        System.out.println(numLabels+"-----"+numExamples+"----"+pathFilter+"---"+labels.get(0));
 	        /**
 	         * Split data: 80% training and 20% testing
 	         */
@@ -85,7 +109,7 @@ public class Deep4JExamples {
 	        InputSplit[] inputSplit = fileSplit.sample(pathFilter, 0.7, 1 - 0.7);
 	        InputSplit trainData = inputSplit[0];
 	        InputSplit testData = inputSplit[1];
-	        
+	        System.out.println(trainData);
 	        //LIGHT DATA AUGMENETATION 
 	        ImageTransform flipTransform1 = new FlipImageTransform(new Random(123));
 	        ImageTransform flipTransform2 = new FlipImageTransform(new Random(123));
@@ -98,10 +122,8 @@ public class Deep4JExamples {
 	         * Define our network architecture:
 	          */
 	    MultiLayerConfiguration configuration = new NeuralNetConfiguration.Builder()
-	    		 // .seed(123)
+	    		  .seed(123)
 	    		  .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
-	    		 
-	    		  
 	    		  .dropOut(0.6)
 	    		  .updater(new Adam(0.1, 0.9, 0.999, 0.01))
 	    		  .list()
@@ -142,13 +164,14 @@ public class Deep4JExamples {
 	        //RECORD READER FOR IMAGES
 	        ImageRecordReader recordReader = new ImageRecordReader(32, 32, 3, labelMaker);
 	        DataSetIterator dataIter;
+	      
 	      //  MultipleEpochsIterator trainIter;
 	        //TRAIN WITHOUT TRANSFORMATION
 	        recordReader.initialize(trainData, null);//transformation is null
 	        dataIter = new RecordReaderDataSetIterator(recordReader, 150, 1, numLabels);
 	        preProcessor.fit(dataIter); //NORMALIZE IMAGES
 	        dataIter.setPreProcessor(preProcessor); //Set Preprocessor to dataiterator
-	       
+	        System.out.println(dataIter);
 	        network.fit(dataIter);
 	        // Train with transformations Number of TrainingImages will be incease
 	        for (ImageTransform transform : transforms) {
